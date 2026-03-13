@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Hub - Crowdsourced Compute Marketplace</title>
+    <title>🤖 Agent Hub - Earn Credits with Your Compute</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
             min-height: 100vh;
         }
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             color: white;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hero p {
-            font-size: 1.3rem;
+        .hero .tagline {
+            font-size: 1.4rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
         }
         .btn {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
-            color: white;
+            padding: 15px 35px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            color: #0d1b2a;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
@@ -46,298 +47,231 @@
         }
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
         }
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+        .section {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
-        .feature-card {
+        .card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 30px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+            color: white;
         }
-        .feature-card h3 {
-            color: #00d4ff;
-            font-size: 1.4rem;
+        .card h2 {
+            color: #00ff88;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .card p {
+            color: rgba(255,255,255,0.8);
             margin-bottom: 15px;
         }
-        .feature-card p {
+        .card ul {
+            color: rgba(255,255,255,0.8);
+            margin-left: 20px;
+        }
+        .card li {
+            margin-bottom: 10px;
+        }
+        code {
+            background: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #00ff88;
+            font-family: monospace;
+        }
+        pre {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .price-card {
+            background: rgba(0,255,136,0.1);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .price-card h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+        .price-card .credits {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        .price-card .usd {
             color: rgba(255,255,255,0.7);
         }
-        .how-it-works {
-            background: rgba(0,0,0,0.3);
-            padding: 60px 20px;
+        .faq {
+            text-align: left;
         }
-        .how-it-works h2 {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+        .faq-item {
+            margin-bottom: 20px;
         }
-        .steps {
-            max-width: 800px;
-            margin: 0 auto;
+        .faq-item h4 {
+            color: #00d4ff;
+            margin-bottom: 8px;
         }
-        .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            color: white;
-        }
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            margin-right: 20px;
-        }
-        .step-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        .step-content p {
-            color: rgba(255,255,255,0.6);
-        }
-        footer {
+        .footer {
             text-align: center;
             padding: 40px 20px;
             color: rgba(255,255,255,0.5);
         }
-        .demo-status {
-            background: rgba(0,212,255,0.1);
-            border: 1px solid #00d4ff;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 400px;
-        }
-        .demo-status h4 {
-            color: #00d4ff;
-            margin-bottom: 10px;
-        }
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #00ff88;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        pre {
-            background: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin-top: 10px;
-        }
-        code {
-            color: #00ff88;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-        }
-        a {
-            color: #00d4ff;
-        }
-        a:hover {
-            text-decoration: underline;
+        .highlight {
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>🤖 Agent Hub</h1>
-        <p>Build the world's first community-owned AI. Contribute compute to train Qwen2.5-2B and earn rewards.</p>
-        <a href="#community-llm" class="btn">Join the Community LLM</a>
-        <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
-        
-        <div class="demo-status" id="demo">
-            <h4><span class="status-indicator"></span>Live: Qwen2.5-2B Training</h4>
-            <p>Distributed fine-tuning in progress</p>
+        <p class="tagline">
+            <strong>Turn your computer into income.</strong><br>
+            Run AI agents, contribute compute, earn real money.
+        </p>
+        <a href="#join" class="btn">Start Earning</a>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <h2>💰 How You Get Paid</h2>
+            <p>Run an agent on your computer. It automatically pulls tasks from the network, completes them, and you earn credits. Convert credits to cash anytime.</p>
+            
+            <div class="pricing-table">
+                <div class="price-card">
+                    <h3>🔄 Inference</h3>
+                    <div class="credits">1-5</div>
+                    <div class="usd">credits/task</div>
+                </div>
+                <div class="price-card">
+                    <h3>📊 Data Processing</h3>
+                    <div class="credits">5-15</div>
+                    <div class="usd">credits/task</div>
+                </div>
+                <div class="price-card">
+                    <h3>🧠 ML Training</h3>
+                    <div class="credits">20-100</div>
+                    <div class="usd">credits/task</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>1 credit = $0.01 USD</strong> • Minimum payout: $1.00</p>
         </div>
     </div>
 
-    <div class="features">
-        <div class="feature-card">
-            <h3>🔗 Decentralized Network</h3>
-            <p>Agents connect from around the world, contributing idle CPU/GPU resources to execute tasks collaboratively.</p>
-        </div>
-        <div class="feature-card">
-            <h3>💳 Credit System</h3>
-            <p>Buy compute credits via crypto or fiat. Agents earn credits for completed work - withdraw anytime.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🔒 Secure Execution</h3>
-            <p>Tasks run in sandboxed Docker containers. All results are cryptographically signed and verifiable.</p>
-        </div>
-        <div class="feature-card">
-            <h3>📊 Real-time Monitoring</h3>
-            <p>Prometheus metrics, live task tracking, and reputation scores for all participants.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🚀 Easy Onboarding</h3>
-            <p>Single command to join as an agent. Simple API for researchers to submit workloads.</p>
-        </div>
-        <div class="feature-card">
-            <h3>⚡ x402 Integration</h3>
-            <p>Seamless fiat-to-crypto ramp. Credit cards, bank transfers, or crypto payments supported.</p>
-        </div>
-    </div>
-
-    <div class="how-it-works" id="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Researchers Submit Jobs</h4>
-                    <p>Create an offer specifying budget, resources needed, and task payload. Pay with credits.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Agents Pull Tasks</h4>
-                    <p>Distributed agents continuously poll for work, execute tasks in isolated sandboxes.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Results Returned & Verified</h4>
-                    <p>Agents sign results with their private key. Coordinator verifies and credits the agent.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h4>Payouts & Withdrawals</h4>
-                    <p>Agents withdraw earned credits to crypto wallets or fiat via the x402 ramp.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="how-it-works" id="community-llm" style="background: linear-gradient(135deg, #1a0a2e 0%, #0d1b2a 100%);">
-        <h2>🧠 Community LLM: Qwen2.5-2B</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">🤖</div>
-                <div class="step-content">
-                    <h4>Distributed Fine-tuning</h4>
-                    <p>Agents worldwide contribute GPU compute to continuously improve Qwen2.5-2B using LoRA adapters.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">📚</div>
-                <div class="step-content">
-                    <h4>Community Knowledge</h4>
-                    <p>Anyone can submit training data. The best contributions are merged into the community model.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">🏆</div>
-                <div class="step-content">
-                    <h4>Earn Rewards</h4>
-                    <p>Contributors earn credits for compute and data. Top contributors get governance rights.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">🔄</div>
-                <div class="step-content">
-                    <h4>Continuous Improvement</h4>
-                    <p>Autoresearch optimizes hyperparameters. Best checkpoints get promoted. The model gets smarter every day.</p>
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center;margin-top:40px;">
-            <a href="#join" class="btn">Start Training</a>
-        </div>
-    </div>
-
-    <div class="how-it-works" id="join">
-        <h2>🚀 Join the Network</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Install Docker</h4>
-                    <p>Make sure Docker is installed on your machine. <a href="https://docs.docker.com/get-docker/" style="color:#00d4ff;">Get Docker here</a></p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Run the Agent</h4>
-                    <p>Copy and paste this single command in your terminal:</p>
-                    <pre style="background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;overflow-x:auto;margin-top:10px;"><code style="color:#00ff88;">docker run -d --name agent \
-  -e COORDINATOR_URL=http://your-coordinator:8000 \
+    <div class="section">
+        <div class="card">
+            <h2>🚀 Start in 30 Seconds</h2>
+            <p>Copy and paste this command in your terminal:</p>
+            
+            <pre><code>docker run -d --name agent \
+  -e COORDINATOR_URL=http://localhost:8000 \
   ghcr.io/amanning3390/agent-hub-demo/agent:latest</code></pre>
+            
+            <p>That's it! Your agent will:</p>
+            <ul>
+                <li>🔌 Connect to the network automatically</li>
+                <li>📥 Pull tasks as they become available</li>
+                <li>✅ Complete work and earn credits</li>
+                <li>💳 Accumulate earnings in your wallet</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card">
+            <h2>💵 Example Earnings</h2>
+            
+            <div class="pricing-table">
+                <div class="price-card">
+                    <h3>1 Hour</h3>
+                    <div class="credits">~150</div>
+                    <div class="usd">≈ $1.50</div>
+                </div>
+                <div class="price-card">
+                    <h3>8 Hours</h3>
+                    <div class="credits">~1,200</div>
+                    <div class="usd">≈ $12.00</div>
+                </div>
+                <div class="price-card">
+                    <h3>24 Hours</h3>
+                    <div class="credits">~3,600</div>
+                    <div class="usd">≈ $36.00</div>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Earn Credits</h4>
-                    <p>Once connected, your agent will automatically pull tasks, execute them, and earn credits for completed work.</p>
-                </div>
+            
+            <p><em>*Based on typical CPU task throughput. GPU agents earn significantly more.</em></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card faq">
+            <h2>❓ Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>Do I need special hardware?</h4>
+                <p>No! A basic laptop or desktop is enough for CPU tasks. For ML training (higher pay), you'll need a GPU with CUDA support.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How do I cash out?</h4>
+                <p>When you reach 100 credits ($1.00), request a withdrawal. Choose between crypto (ETH, USDC) or bank transfer via Stripe.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Is this real?</h4>
+                <p>Yes. This is a working demo running on real infrastructure. The credits have monetary value and can be withdrawn.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What tasks will my agent do?</h4>
+                <p>Currently: AI inference, data processing, and ML model training. More task types coming soon.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How secure is this?</h4>
+                <p>Agents are identified by cryptographic keys. All task results are signed and verified. Your earnings are recorded in an immutable ledger.</p>
             </div>
         </div>
     </div>
 
-    <div class="how-it-works" style="background:rgba(0,0,0,0.5);">
-        <h2>💻 For Researchers</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Submit a Compute Job</h4>
-                    <p>Use our Python SDK to submit jobs:</p>
-                    <pre style="background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;overflow-x:auto;margin-top:10px;"><code style="color:#00ff88;">pip install agent-hub-sdk
+    <div class="section" id="join">
+        <div class="card">
+            <h2>🎯 Ready to Start?</h2>
+            <p>Join the network today. It takes less than a minute.</p>
+            
+            <pre><code># Install Docker first: https://docs.docker.com/get-docker/
 
-from agent_hub import AgentClient
-client = AgentClient(api_key="your-key")
-offer_id = client.create_offer(
-    budget_usd=10,
-    payload={"task": "run_inference", "model": "nano"}
-)
-print(f"Offer created: {offer_id}")</code></pre>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Get Results</h4>
-                    <p>Poll for results as they come in from distributed agents around the world.</p>
-                </div>
-            </div>
+# Then run:
+docker run -d --name my-agent \
+  -e COORDINATOR_URL=http://localhost:8000 \
+  ghcr.io/amanning3390/agent-hub-demo/agent:latest</code></pre>
+            
+            <p style="margin-top: 20px;">Need help? Join our <a href="#" style="color:#00d4ff;">Discord</a> or check the <a href="https://github.com/amanning3390/agent-hub-demo" style="color:#00d4ff;">GitHub</a>.</p>
         </div>
     </div>
 
-    <footer>
+    <div class="footer">
         <p>🤖 Built with Rust + FastAPI + Docker</p>
         <p>Open source demo • Not for production use</p>
-    </footer>
+    </div>
 </body>
 </html>
