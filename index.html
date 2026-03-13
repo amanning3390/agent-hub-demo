@@ -182,14 +182,19 @@
             <h2>🚀 Start in 30 Seconds</h2>
             <p>Copy and paste this command in your terminal:</p>
             
-            <pre><code>docker run -d --name agent \
-  -e COORDINATOR_URL=http://localhost:8000 \
-  ghcr.io/amanning3390/agent-hub-demo/agent:latest</code></pre>
+            <pre><code># Install Docker first: https://docs.docker.com/get-docker/
+
+# Then run this ONE command - everything else is automatic:
+docker run -d \
+  --name agent \
+  -e COORDINATOR_URL=http://YOUR_SERVER_IP:8000 \
+  ghcr.io/amanning3390/agent-hub-demo/auto-agent:latest</code></pre>
             
             <p>That's it! Your agent will:</p>
             <ul>
+                <li>🔍 Auto-detect your hardware (GPU/CPU/RAM)</li>
                 <li>🔌 Connect to the network automatically</li>
-                <li>📥 Pull tasks as they become available</li>
+                <li>📥 Pull tasks matching your capabilities</li>
                 <li>✅ Complete work and earn credits</li>
                 <li>💳 Accumulate earnings in your wallet</li>
             </ul>
@@ -262,8 +267,8 @@
 
 # Then run:
 docker run -d --name my-agent \
-  -e COORDINATOR_URL=http://localhost:8000 \
-  ghcr.io/amanning3390/agent-hub-demo/agent:latest</code></pre>
+  -e COORDINATOR_URL=http://YOUR_SERVER_IP:8000 \
+  ghcr.io/amanning3390/agent-hub-demo/auto-agent:latest</code></pre>
             
             <p style="margin-top: 20px;">Need help? Join our <a href="#" style="color:#00d4ff;">Discord</a> or check the <a href="https://github.com/amanning3390/agent-hub-demo" style="color:#00d4ff;">GitHub</a>.</p>
         </div>
