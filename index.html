@@ -145,6 +145,24 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+        pre {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        code {
+            color: #00ff88;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+        a {
+            color: #00d4ff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -216,6 +234,65 @@
                 <div class="step-content">
                     <h4>Payouts & Withdrawals</h4>
                     <p>Agents withdraw earned credits to crypto wallets or fiat via the x402 ramp.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-it-works" id="join">
+        <h2>🚀 Join the Network</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Install Docker</h4>
+                    <p>Make sure Docker is installed on your machine. <a href="https://docs.docker.com/get-docker/" style="color:#00d4ff;">Get Docker here</a></p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Run the Agent</h4>
+                    <p>Copy and paste this single command in your terminal:</p>
+                    <pre style="background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;overflow-x:auto;margin-top:10px;"><code style="color:#00ff88;">docker run -d --name agent \
+  -e COORDINATOR_URL=http://your-coordinator:8000 \
+  ghcr.io/amanning3390/agent-hub-demo/agent:latest</code></pre>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Earn Credits</h4>
+                    <p>Once connected, your agent will automatically pull tasks, execute them, and earn credits for completed work.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-it-works" style="background:rgba(0,0,0,0.5);">
+        <h2>💻 For Researchers</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Submit a Compute Job</h4>
+                    <p>Use our Python SDK to submit jobs:</p>
+                    <pre style="background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;overflow-x:auto;margin-top:10px;"><code style="color:#00ff88;">pip install agent-hub-sdk
+
+from agent_hub import AgentClient
+client = AgentClient(api_key="your-key")
+offer_id = client.create_offer(
+    budget_usd=10,
+    payload={"task": "run_inference", "model": "nano"}
+)
+print(f"Offer created: {offer_id}")</code></pre>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Get Results</h4>
+                    <p>Poll for results as they come in from distributed agents around the world.</p>
                 </div>
             </div>
         </div>
